@@ -13,37 +13,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Handle file upload
     $imagePath = '';
-    if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] === UPLOAD_ERR_OK) {
-        $fileTmpPath = $_FILES['recipe_image']['tmp_name'];
-        $fileName = $_FILES['recipe_image']['name'];
-        $fileSize = $_FILES['recipe_image']['size'];
-        $fileType = $_FILES['recipe_image']['type'];
-        $fileNameCmps = explode(".", $fileName);
-        $fileExtension = strtolower(end($fileNameCmps));
+    if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] !== UPLOAD_ERR_NO_FILE) {
+        if ($_FILES['recipe_image']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['recipe_image']['tmp_name'];
+            $fileName = $_FILES['recipe_image']['name'];
+            $fileSize = $_FILES['recipe_image']['size'];
+            $fileType = $_FILES['recipe_image']['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
 
-        $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
-        if (in_array($fileExtension, $allowedfileExtensions)) {
-            $uploadFileDir = 'F:/asd/htdocs/rs/uploads/';
-            $dest_path = $uploadFileDir . $fileName;
+            $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
+            if (in_array($fileExtension, $allowedfileExtensions)) {
+                $uploadFileDir = 'F:/asd/htdocs/rs/uploads/';
+                $dest_path = $uploadFileDir . $fileName;
 
-            if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $imagePath = 'uploads/' . $fileName;
+                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    $imagePath = 'uploads/' . $fileName;
+                } else {
+                    error_log('Error moving file: ' . print_r($_FILES['recipe_image'], true));
+                    $_SESSION['error_message'] = 'There was an error moving the uploaded file. Please check the folder permissions.';
+                    header("Location: addR.php");
+                    exit();
+                }
             } else {
-                error_log('Error moving file: ' . print_r($_FILES['recipe_image'], true));
-                $_SESSION['error_message'] = 'There was an error moving the uploaded file. Please check the folder permissions.';
+                $_SESSION['error_message'] = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
                 header("Location: addR.php");
                 exit();
             }
         } else {
-            $_SESSION['error_message'] = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+            error_log('File upload error code: ' . $_FILES['recipe_image']['error']);
+            $_SESSION['error_message'] = 'There was an error uploading the file.';
             header("Location: addR.php");
             exit();
         }
-    } else {
-        error_log('File upload error code: ' . $_FILES['recipe_image']['error']);
-        $_SESSION['error_message'] = 'There was an error uploading the file.';
-        header("Location: addR.php");
-        exit();
     }
 
     $submissionDate = date('Y-m-d H:i:s');
@@ -86,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea id="ingredients" name="ingredients" required></textarea><br>
             <label for="instructions">Instructions:</label><br>
             <textarea id="instructions" name="instructions" required></textarea><br>
-            <label for="recipe_image">Upload Image:</label><br>
+            <label for="recipe_image">Upload Image (optional):</label><br>
             <input type="file" id="recipe_image" name="recipe_image" accept="image/*"><br>
             <input type="submit" value="Submit">
             <a href="R.php" class="view-all-link">Go back?</a>
