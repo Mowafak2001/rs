@@ -1,13 +1,10 @@
-/* add_recipe.css */
-
-/* Resetting default browser styles */
- h1, p, form, label, input, textarea {
+body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f4;
 }
 
-/* Centering the content */
 .center-content {
     display: flex;
     justify-content: center;
@@ -16,14 +13,13 @@
     background-color: #f4f4f4;
 }
 
-/* Styling the form */
 form {
     width: 400px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Add margin for separation from "View All Recipes" link */
+    margin-top: 20px;
 }
 
 form label {
@@ -57,7 +53,6 @@ form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Style for the "View All Recipes" link */
 .view-all-link {
     display: inline-block;
     background-color: #007bff;
@@ -65,9 +60,59 @@ form input[type="submit"]:hover {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 4px;
-    margin-bottom: 20px; /* Add margin for separation from the form */
+    margin-bottom: 20px;
 }
 
 .view-all-link:hover {
     background-color: #0056b3;
+}
+
+.search-results {
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+.blog_post {
+    background: #fff;
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.container_copy {
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.btn_primary, .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 1px 10px 2rem rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in;
+    margin-right: 10px;
+}
+
+.btn_primary:hover, .button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
