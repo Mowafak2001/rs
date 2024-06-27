@@ -42,7 +42,7 @@ include('../templates/header.php');
 <section class="articles">
     <article>
         <figure>
-            <img src="../static/images/6.jpeg" alt="Image" />
+            <img src="https://media.istockphoto.com/id/618201406/photo/typical-spanish-tapas-concept-top-view.jpg?s=2048x2048&w=is&k=20&c=cXjudDZMmJJYta99fxMoGA-MCgaLOsNjOJn1Sk1s54U=" alt="Image" />
         </figure>
         <div class="article-body">
             <h2>What is Foodies?</h2>
@@ -52,7 +52,7 @@ include('../templates/header.php');
     
     <article>
         <figure>
-            <img src="../static/images/3.jpeg" alt="Image" />
+            <img src="https://media.istockphoto.com/id/639001742/photo/food-and-wine-brings-people-together.jpg?s=2048x2048&w=is&k=20&c=hJjFNae7XZ0rJk39BOJW8F-bl4OHT-Kd1_KK5YO7R38=" alt="Image" />
         </figure>
         <div class="article-body">
             <h2>Motivation</h2>
@@ -62,7 +62,7 @@ include('../templates/header.php');
     
     <article>
         <figure>
-            <img src="../static/images/4.jpeg" alt="Image" />
+            <img src="https://as1.ftcdn.net/v2/jpg/05/58/79/54/1000_F_558795469_pvzp1H4yYhRSqo6hdhD00GzQMt2Vhian.jpg" alt="Image" />
         </figure>
         <div class="article-body">
             <h2>Our Goals</h2>
